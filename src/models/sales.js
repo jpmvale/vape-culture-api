@@ -1,10 +1,14 @@
 const mongoose = require("mongoose");
 
-const SalesSchema = mongoose.Schema({
+const SalesSchema = mongoose.Schema(
+  {
     client_id: Number,
     product_id: Number,
     date: String,
     value: Number,
-}, { timestamps: true });
+    quantity: Number,
+  },
+  { timestamps: true }
+);
 
 mongoose.model("sales", SalesSchema);
