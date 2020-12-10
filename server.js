@@ -11,6 +11,7 @@ mongoose.connect(process.env.MONGODB, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
+mongoose.set('returnOriginal', false);
 
 const port = process.env.PORT;
 

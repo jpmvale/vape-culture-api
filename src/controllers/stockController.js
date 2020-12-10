@@ -21,7 +21,8 @@ module.exports = {
   async UpdateStock(req, res) {
     const stockId = req.params.stockId;
     const updatedStock = req.body;
-    const response = await stock.findByIdAndUpdate(stockId, updatedStock);
+    await stock.findByIdAndUpdate(stockId, updatedStock);
+    const response = findById(stockId);
     res.json(response);
   },
   async RemoveStock(req, res) {
@@ -29,5 +30,10 @@ module.exports = {
     const response = await stock.findByIdAndRemove(stockId);
     res.json(response);
   },
+  async GetStockByProductId(req,res){
+    const product = req.params.productId;
+    const response = await stock.findOne({productId : product});
+    res.json(response);
+  }
   // Other queries
 };

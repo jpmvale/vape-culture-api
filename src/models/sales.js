@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 
 const SalesSchema = mongoose.Schema(
   {
-    client_id: Number,
-    product_id: Number,
-    date: String,
+    clientId: String,
+    productId: String,
+    date: Date,
     value: Number,
     quantity: Number,
   },

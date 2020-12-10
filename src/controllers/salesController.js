@@ -10,18 +10,22 @@ module.exports = {
         res.json(response);
     },
     async ListSales(req, res) {
-        console.log('a');
         const response = await sales.find({});
         res.json(response);
     },
+    async GetSale(req,res){
+        const saleId = req.params.saleId
+        const response = await sales.findById(saleId);
+        res.json(response);
+    },
     async UpdateSales(req, res) {
-        const salesId = req.params.salesId;
+        const salesId = req.params.saleId;
         const updatedSale = req.body;
         const response = await sales.findByIdAndUpdate(salesId, updatedSale);
         res.json(response);
     },
     async RemoveSale(req, res) {
-        const salesId = req.params.salesId;
+        const salesId = req.params.saleId;
         const response = await sales.findByIdAndRemove(salesId);
         res.json(response);
     }

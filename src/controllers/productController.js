@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const product = mongoose.model("product");
+const stock = mongoose.model("stock");
 
 module.exports = {
   // CRUD
@@ -30,5 +31,29 @@ module.exports = {
     const response = await product.findByIdAndRemove(productId);
     res.json(response);
   },
+  async GetProductsNotStocked(req,res){
+    const products = await product.find({});
+    let productsInStock = await stock.find({});
+    productsInStock = productsInStock.map(x=>x.productId);
+    let response = [];
+    products.forEach(x=> {
+        if (!productsInStock.includes(x._id.toString())){
+          response.push(x);
+        }
+    });
+    res.json(response);
+  },
+  async GetProductsStocked(req,res){
+    const products = await product.find({});
+    let productsInStock = await stock.find({});
+    productsInStock = productsInStock.map(x=>x.productId);
+    let response = [];
+    products.forEach(x=> {
+        if (productsInStock.includes(x._id.toString())){
+          response.push(x);
+        }
+    });
+    res.json(response);
+  }
   // Other queries
 };

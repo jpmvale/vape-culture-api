@@ -13,9 +13,14 @@ module.exports = {
         const response = await purchase.find({});
         res.json(response);
     },
-    async UpdatePurchases(req, res) {
+    async GetPurchase(req, res) {
         const purchaseId = req.params.purchaseId;
-        const updatedPurchase = req.body;
+        const response = await purchase.findById(purchaseId);
+        res.json(response);
+    },
+    async UpdatePurchase(req, res) {
+        const purchaseId = req.params.purchaseId;
+        const updatedPurchase = req.body;             
         const response = await purchase.findByIdAndUpdate(purchaseId, updatedPurchase);
         res.json(response);
     },

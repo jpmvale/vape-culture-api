@@ -14,33 +14,31 @@ routes.get("/client/getClient/:clientId", clientController.GetClient);
 routes.post("/client/createClient", clientController.RegisterClient);
 routes.post("/client/updateClient/:clientId", clientController.UpdateClients);
 routes.post("/client/removeClient/:clientId", clientController.RemoveClient);
-//PRODUCTS
-routes.get("/product/getProducts", productController.ListProducts);
+//PRODUCTSGetProductsNotStocked
+routes.get("/product/getProducts/", productController.ListProducts);
 routes.get("/product/getProduct/:productId", productController.GetProduct);
+routes.get("/product/getProductsStocked/", productController.GetProductsStocked);
+routes.get("/product/getProductsNotStocked/", productController.GetProductsNotStocked);
 routes.post("/product/createProduct", productController.RegisterProduct);
-routes.post(
-  "/product/updateProduct/:productId",
-  productController.UpdateProducts
-);
-routes.post(
-  "/product/removeProduct/:productId",
-  productController.RemoveProduct
-);
+routes.post("/product/updateProduct/:productId",productController.UpdateProducts);
+routes.post("/product/removeProduct/:productId", productController.RemoveProduct);
 //SALES
 routes.get("/sales/getSales", salesController.ListSales);
+routes.get("/sales/getSale/:saleId", salesController.GetSale);
 routes.post("/sales/createSale", salesController.RegisterSale);
-routes.post("/sales/updateSale", salesController.UpdateSales);
-routes.post("/sales/removeSale", salesController.RemoveSale);
+routes.post("/sales/updateSale/:saleId", salesController.UpdateSales);
+routes.post("/sales/removeSale/:saleId", salesController.RemoveSale);
 //PURCHASE
-routes.get("/purchase/getPurchase", purchaseController.ListPurchases);
+routes.get("/purchase/getPurchases", purchaseController.ListPurchases);
+routes.get("/purchase/getPurchase/:purchaseId", purchaseController.GetPurchase);
 routes.post("/purchase/createPurchase", purchaseController.RegisterPurchase);
-routes.post("/purchase/updatePurchase", purchaseController.UpdatePurchases);
-routes.post("/purchase/removePurchase", purchaseController.RemovePurchase);
+routes.post("/purchase/updatePurchase/:purchaseId", purchaseController.UpdatePurchase);
+routes.post("/purchase/removePurchase/:purchaseId", purchaseController.RemovePurchase);
 //STOCK
 routes.get("/stock/getStocks", stockController.ListStock);
 routes.get("/stock/getStock/:stockId", stockController.GetStock);
+routes.get("/stock/getStockByProductId/:productId",stockController.GetStockByProductId);
 routes.post("/stock/createStock", stockController.RegisterStock);
-routes.post("/stock/updateStock", stockController.UpdateStock);
-routes.post("/stock/removeStock", stockController.RemoveStock);
-
+routes.post("/stock/updateStock/:stockId", stockController.UpdateStock);
+routes.post("/stock/removeStock/:stockId", stockController.RemoveStock);
 module.exports = routes;
